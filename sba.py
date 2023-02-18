@@ -546,7 +546,7 @@ class sba_product_list:
                                           builder = "Manufacturers",
                                           rate = 4.5,
                                           inputs = {"crystal oscillator":1.5,
-                                                    "circut board":15.0,
+                                                    "circuit board":15.0,
                                                     "aluminum casing":90.0,
                                                     "rubber":45.0})
         radio_connection_unit = sba_recipe("Radio Connection Units",
@@ -902,19 +902,19 @@ class sba_product_list:
         computer = sba_recipe("Computer",
                               builder = "Manufacturers",
                               rate = 2.5,
-                              inputs = {"circut board":25.0,
+                              inputs = {"circuit board":25.0,
                                         "cable":22.5,
                                         "plastic":45.0,
                                         "screw":130.0})
         crystal_computer = sba_recipe("Crystal Computer",
                                       builder = "Assemblers",
                                       rate = 2.8125,
-                                      inputs = {"circut board":7.5,
+                                      inputs = {"circuit board":7.5,
                                                 "crystal oscillator":2.8125})
         caterium_computer = sba_recipe("Caterium Computer",
                                        builder = "Manufacturers",
                                        rate = 3.75,
-                                       inputs = {"circut board":26.25,
+                                       inputs = {"circuit board":26.25,
                                                  "quickwire":105.0,
                                                  "rubber":45.0})
 
@@ -926,36 +926,36 @@ class sba_product_list:
             self.recipes["computer"] = computer
 
 
-        #circut board
-        circut_board = sba_recipe("Circut Board",
+        #circuit board
+        circuit_board = sba_recipe("Circuit Board",
                                   builder = "Assemblers",
                                   rate = 7.5,
                                   inputs = {"copper sheet":15.0,
                                             "plastic":30.0})
-        electrode_circut_board = sba_recipe("Electrode Circut Board",
+        electrode_circuit_board = sba_recipe("Electrode Circuit Board",
                                             builder = "Assemblers",
                                             rate = 5,
                                             inputs = {"rubber":30.0,
                                                       "petrolium coke":45.0})
-        silicon_circut_board = sba_recipe("Silicon Circut Board",
+        silicon_circuit_board = sba_recipe("Silicon Circuit Board",
                                           builder = "Assemblers",
                                           rate = 12.5,
                                           inputs = {"copper sheet":27.5,
                                                     "silica":27.5})
-        caterium_circut_board = sba_recipe("Caterium Circut Board",
+        caterium_circuit_board = sba_recipe("Caterium Circuit Board",
                                            builder = "Assemblers",
                                            rate = 8.75,
                                            inputs = {"plastic":12.5,
                                                      "quickwire":37.5})
 
-        if "electode circut board" in self.alternate_recipes:
-            self.recipes["circut board"] = electrode_circut_board
-        elif "silicon circut board" in self.alternate_recipes:
-            self.recipes["circut board"] = silicon_circut_board
-        elif "caterium circut board" in self.alternate_recipes:
-            self.recipes["circut board"] = caterium_circut_board
+        if "electrode circuit board" in self.alternate_recipes:
+            self.recipes["circuit board"] = electrode_circuit_board
+        elif "silicon circuit board" in self.alternate_recipes:
+            self.recipes["circuit board"] = silicon_circuit_board
+        elif "caterium circuit board" in self.alternate_recipes:
+            self.recipes["circuit board"] = caterium_circuit_board
         else:
-            self.recipes["circut board"] = circut_board
+            self.recipes["circuit board"] = circuit_board
 
 
         #adaptive control unit
@@ -963,7 +963,7 @@ class sba_product_list:
                                            builder = "Manufacturers",
                                            rate = 1.0,
                                            inputs = {"automated wiring":7.5,
-                                                     "circut board":5.0,
+                                                     "circuit board":5.0,
                                                      "heavy modular frame":1.0,
                                                      "computer":1.0})
 
@@ -1236,13 +1236,13 @@ class sba_product_list:
                                           rate = 3.75,
                                           inputs = {"quickwire":210.0,
                                                     "cable":37.5,
-                                                    "circut board":3.75})
+                                                    "circuit board":3.75})
         silicon_high_speed_connector = sba_recipe("Silicon High-Speed Connector",
                                                   builder = "Manufacturers",
                                                   rate = 3.0,
                                                   inputs = {"quickwire":90.0,
                                                             "silica":37.5,
-                                                            "circut board":3.0})
+                                                            "circuit board":3.0})
 
         self.recipes["high-speed connector"] = silicon_high_speed_connector if "silicon high-speed connector" in self.alternate_recipes else high_speed_connector
 
@@ -1694,9 +1694,22 @@ class sba_product_list:
             print(value, key)
 
 def main():
-    my_recipe = sba_product_list()
-    my_recipe.add_product("smart plating", 2)
-    my_recipe.add_product("Assembly Director System",5)
+    my_recipe = sba_product_list(alternate_recipes = ["Steamed Copper Sheet", 
+                                                      "Pure Caterium Ingot",
+                                                      "Electrode Circuit Board",
+                                                      "Coated Cable",
+                                                      "Caterium Computer",
+                                                      "Heavy Encased Frame",
+                                                      "Wet Concrete",
+                                                      "Steeled Frame",
+                                                      "Stitched Iron Plate",
+                                                      "Fused Wire",
+                                                      "Pure Iron Ingot",
+                                                      "Pure Copper Ingot",
+                                                      "Encased Industrial Pipe",
+                                                      "Recycled Rubber",
+                                                      "Diluted Fuel"])
+    my_recipe.add_product("Assembly Director System",4)
     my_recipe.print_result()
 
 if __name__ == "__main__":
