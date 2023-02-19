@@ -1647,8 +1647,8 @@ class sba_product_list:
         product_info = self.recipes[product]
 
         # check if it is a resource or set stop point and add it to the resources list if so
-        if product_info.is_resource:
-            if product in self.resources or product in self.stop_points:
+        if product_info.is_resource or product in self.stop_points:
+            if product in self.resources:
                 self.resources[product] += rate
             else:
                 self.resources[product] = rate
